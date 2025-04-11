@@ -1,6 +1,15 @@
-import React, { useState } from 'react';
-import { Calendar, Film, Users, MessageCircle, X, Upload, Search, Lock, Globe, MessageSquare } from 'lucide-react';
-import { format } from 'date-fns';
+import React, { useState } from "react";
+import {
+  Calendar,
+  Film,
+  Users,
+  MessageCircle,
+  Search,
+  Lock,
+  Globe,
+  MessageSquare,
+} from "lucide-react";
+import { format } from "date-fns";
 
 function App() {
   const [showCreateEvent, setShowCreateEvent] = useState(false);
@@ -15,7 +24,7 @@ function App() {
               <Film className="w-8 h-8 text-primary" />
               <h1 className="text-2xl font-bold">Movie Night Planner</h1>
             </div>
-            <button 
+            <button
               onClick={() => setShowCreateEvent(true)}
               className="px-4 py-2 bg-primary hover:bg-primary-dark rounded-lg font-medium transition-colors"
             >
@@ -37,93 +46,114 @@ function App() {
 
 function CreateEventPage({ onClose }: { onClose: () => void }) {
   const [eventData, setEventData] = useState({
-    name: '',
-    description: '',
-    date: format(new Date(), 'yyyy-MM-dd'),
-    time: '19:00',
-    theme: 'general',
+    name: "",
+    description: "",
+    date: format(new Date(), "yyyy-MM-dd"),
+    time: "19:00",
+    theme: "general",
     isPublic: false,
     enableVoting: true,
     enableChat: true,
   });
 
   const themes = [
-    { value: 'general', label: '🎬 General' },
-    { value: 'horror', label: '🎃 Horror' },
-    { value: 'romance', label: '❤️ Romance' },
-    { value: 'comedy', label: '🎉 Comedy' },
-    { value: 'action', label: '💥 Action' },
-    { value: 'scifi', label: '🚀 Sci-Fi' },
+    { value: "general", label: "🎬 General" },
+    { value: "horror", label: "🎃 Horror" },
+    { value: "romance", label: "❤️ Romance" },
+    { value: "comedy", label: "🎉 Comedy" },
+    { value: "action", label: "💥 Action" },
+    { value: "scifi", label: "🚀 Sci-Fi" },
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
-    console.log('Event data:', eventData);
+    console.log("Event data:", eventData);
   };
 
   return (
     <main className="container mx-auto px-4 py-8">
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-4xl font-bold text-center mb-8">🍿 Plan Your Movie Night!</h1>
-        
-        <form onSubmit={handleSubmit} className="bg-background-lighter rounded-xl p-8 shadow-lg">
+        <h1 className="text-4xl font-bold text-center mb-8">
+          🍿 Plan Your Movie Night!
+        </h1>
+
+        <form
+          onSubmit={handleSubmit}
+          className="bg-background-lighter rounded-xl p-8 shadow-lg"
+        >
           {/* Event Information */}
           <section className="mb-8">
             <h2 className="text-2xl font-semibold mb-4">Event Information</h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-1">Event Name</label>
+                <label className="block text-sm font-medium mb-1">
+                  Event Name
+                </label>
                 <input
                   type="text"
                   value={eventData.name}
-                  onChange={(e) => setEventData({ ...eventData, name: e.target.value })}
+                  onChange={(e) =>
+                    setEventData({ ...eventData, name: e.target.value })
+                  }
                   className="w-full px-4 py-2 bg-background rounded-lg border border-background-lighter focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                   placeholder="Weekend Movie Marathon"
                 />
               </div>
-              
+
               <div>
-                <label className="block text-sm font-medium mb-1">Description</label>
+                <label className="block text-sm font-medium mb-1">
+                  Description
+                </label>
                 <textarea
                   value={eventData.description}
-                  onChange={(e) => setEventData({ ...eventData, description: e.target.value })}
+                  onChange={(e) =>
+                    setEventData({ ...eventData, description: e.target.value })
+                  }
                   className="w-full px-4 py-2 bg-background rounded-lg border border-background-lighter focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors h-24"
                   placeholder="Let's wear pajamas and watch our favorite movies!"
                 />
               </div>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium mb-1">Date</label>
                   <input
                     type="date"
                     value={eventData.date}
-                    onChange={(e) => setEventData({ ...eventData, date: e.target.value })}
+                    onChange={(e) =>
+                      setEventData({ ...eventData, date: e.target.value })
+                    }
                     className="w-full px-4 py-2 bg-background rounded-lg border border-background-lighter focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                   />
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium mb-1">Time</label>
                   <input
                     type="time"
                     value={eventData.time}
-                    onChange={(e) => setEventData({ ...eventData, time: e.target.value })}
+                    onChange={(e) =>
+                      setEventData({ ...eventData, time: e.target.value })
+                    }
                     className="w-full px-4 py-2 bg-background rounded-lg border border-background-lighter focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                   />
                 </div>
               </div>
-              
+
               <div>
                 <label className="block text-sm font-medium mb-1">Theme</label>
                 <select
                   value={eventData.theme}
-                  onChange={(e) => setEventData({ ...eventData, theme: e.target.value })}
+                  onChange={(e) =>
+                    setEventData({ ...eventData, theme: e.target.value })
+                  }
                   className="w-full px-4 py-2 bg-background rounded-lg border border-background-lighter focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-colors"
                 >
                   {themes.map((theme) => (
-                    <option key={theme.value} value={theme.value}>{theme.label}</option>
+                    <option key={theme.value} value={theme.value}>
+                      {theme.label}
+                    </option>
                   ))}
                 </select>
               </div>
@@ -159,20 +189,31 @@ function CreateEventPage({ onClose }: { onClose: () => void }) {
                 <input
                   type="checkbox"
                   checked={eventData.isPublic}
-                  onChange={(e) => setEventData({ ...eventData, isPublic: e.target.checked })}
+                  onChange={(e) =>
+                    setEventData({ ...eventData, isPublic: e.target.checked })
+                  }
                   className="w-5 h-5 rounded border-background-lighter text-primary focus:ring-primary"
                 />
                 <span className="flex items-center space-x-2">
-                  {eventData.isPublic ? <Globe className="w-5 h-5" /> : <Lock className="w-5 h-5" />}
+                  {eventData.isPublic ? (
+                    <Globe className="w-5 h-5" />
+                  ) : (
+                    <Lock className="w-5 h-5" />
+                  )}
                   <span>Make event public</span>
                 </span>
               </label>
-              
+
               <label className="flex items-center space-x-2">
                 <input
                   type="checkbox"
                   checked={eventData.enableVoting}
-                  onChange={(e) => setEventData({ ...eventData, enableVoting: e.target.checked })}
+                  onChange={(e) =>
+                    setEventData({
+                      ...eventData,
+                      enableVoting: e.target.checked,
+                    })
+                  }
                   className="w-5 h-5 rounded border-background-lighter text-primary focus:ring-primary"
                 />
                 <span className="flex items-center space-x-2">
@@ -180,12 +221,14 @@ function CreateEventPage({ onClose }: { onClose: () => void }) {
                   <span>Enable movie voting</span>
                 </span>
               </label>
-              
+
               <label className="flex items-center space-x-2">
                 <input
                   type="checkbox"
                   checked={eventData.enableChat}
-                  onChange={(e) => setEventData({ ...eventData, enableChat: e.target.checked })}
+                  onChange={(e) =>
+                    setEventData({ ...eventData, enableChat: e.target.checked })
+                  }
                   className="w-5 h-5 rounded border-background-lighter text-primary focus:ring-primary"
                 />
                 <span className="flex items-center space-x-2">
@@ -223,9 +266,12 @@ function LandingPage() {
     <main className="container mx-auto px-4 py-8">
       {/* Welcome Section */}
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4">Plan Your Perfect Movie Night</h2>
+        <h2 className="text-4xl font-bold mb-4">
+          Plan Your Perfect Movie Night
+        </h2>
         <p className="text-text-muted text-lg max-w-2xl mx-auto">
-          Create memorable movie nights with friends. Vote on films, chat in real-time, and make every viewing special.
+          Create memorable movie nights with friends. Vote on films, chat in
+          real-time, and make every viewing special.
         </p>
       </div>
 
@@ -259,9 +305,12 @@ function LandingPage() {
             />
           </div>
           <div className="md:w-1/2">
-            <h3 className="text-2xl font-bold mb-4">Upcoming: Horror Movie Marathon</h3>
+            <h3 className="text-2xl font-bold mb-4">
+              Upcoming: Horror Movie Marathon
+            </h3>
             <p className="text-text-muted mb-4">
-              Join us this Friday for a spine-chilling night of classic horror films. Vote for your favorites and bring your courage!
+              Join us this Friday for a spine-chilling night of classic horror
+              films. Vote for your favorites and bring your courage!
             </p>
             <div className="flex items-center space-x-4">
               <span className="text-primary">8 friends joined</span>
@@ -275,7 +324,15 @@ function LandingPage() {
   );
 }
 
-function FeatureCard({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) {
+function FeatureCard({
+  icon,
+  title,
+  description,
+}: {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) {
   return (
     <div className="bg-background-lighter p-6 rounded-xl">
       <div className="text-primary mb-4">{icon}</div>
