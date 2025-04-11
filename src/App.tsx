@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  Calendar,
-  Film,
-  Users,
-  MessageCircle,
-  Search,
-  Lock,
-  Globe,
-  MessageSquare,
-} from "lucide-react";
+import { Film, Users, Search, Lock, Globe, MessageSquare } from "lucide-react";
 import { format } from "date-fns";
 
 function App() {
@@ -275,25 +266,6 @@ function LandingPage() {
         </p>
       </div>
 
-      {/* Features Grid */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <FeatureCard
-          icon={<Calendar className="w-6 h-6" />}
-          title="Easy Scheduling"
-          description="Pick a date and time that works for everyone with our calendar sync feature."
-        />
-        <FeatureCard
-          icon={<Users className="w-6 h-6" />}
-          title="Group Voting"
-          description="Vote on movie suggestions and make decisions together in real-time."
-        />
-        <FeatureCard
-          icon={<MessageCircle className="w-6 h-6" />}
-          title="Live Chat"
-          description="Chat with friends before the movie starts and during breaks."
-        />
-      </div>
-
       {/* Movie Night Preview */}
       <div className="mt-16 bg-background-lighter rounded-xl p-6">
         <div className="flex flex-col md:flex-row gap-8">
@@ -321,24 +293,6 @@ function LandingPage() {
         </div>
       </div>
     </main>
-  );
-}
-
-function FeatureCard({
-  icon,
-  title,
-  description,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="bg-background-lighter p-6 rounded-xl">
-      <div className="text-primary mb-4">{icon}</div>
-      <h3 className="text-xl font-bold mb-2">{title}</h3>
-      <p className="text-text-muted">{description}</p>
-    </div>
   );
 }
 
